@@ -1,0 +1,30 @@
+body{
+    background-size: cover;
+    font-family: 'Alumni Sans Collegiate One', sans-serif !important;
+}
+
+.heading{
+    width: 100%;
+    margin: 0;
+    font-size:50px !important;
+    color: rgb(8, 8, 40) !important;
+    letter-spacing: 1px;
+    box-shadow: 7px 7px 7px rgb(85, 85, 85);
+}
+
+.note{
+    font-size: 28px !important;
+}
+
+#song {
+    color: rgb(8, 8, 40) !important;
+    font-size: 35px !important;
+    width: 120px;
+    box-shadow: 3px 3px 3px rgb(85, 85, 85);
+}
+
+canvas{
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgb(85, 85, 85);
+    margin-top: 150px;
+}
