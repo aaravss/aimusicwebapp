@@ -1,8 +1,9 @@
-rightearX = 0;
-rightearY = 0;
-leftearX = 0;
-leftearY = 0;
-leftearScore = 0;
+righteyeX = 0;
+righteyeY = 0;
+lefteyeX = 0;
+lefteyeY = 0;
+lefteyeScore = 0;
+righteyeScore = 0;
 song1status = "";
 song2status = "";
 
@@ -28,13 +29,27 @@ function draw(){
     fill("#FF00E1");
     stroke("#FF00E1");
     song1status = song1.isPlaying();
-    if(leftearScore>0.8){
-        circle(leftearX, leftearY, 20);
+    if(lefteyeScore>0.985){
+        circle(lefteyeX, lefteyeY, 20);
         song2.stop();
         if(song1status == false){
             song1.play();
             document.getElementById("song").innerHTML = "Song: I Wanna Feel";
         }
+    }
+    song2status = song2.isPlaying();
+    if(righteyeScore>0.985){
+        circle(righteyeX, righteyeY, 20);
+        song1.stop();
+        if(song2status == false){
+            song2.play();
+            document.getElementById("song").innerHTML = "Song: Twisted";
+        }
+    }
+    if(righteyeScore>0.985 && lefteyeScore>0.985){
+        song1.stop();
+        song2.stop();
+        document.getElementById("song").innerHTML = "You must cover one eye to play a song!";
     }
 }
 
@@ -45,14 +60,15 @@ function modelLoaded(){
 function gotPoses(results){
     if(results.length>0){
         console.log(results);
-        console.log(rightearX);
-        rightearY = results[0].pose.rightEar.y;
-        rightearX = results[0].pose.rightEar.x;
-        console.log(rightearY);
-        console.log(leftearX);
-        leftearY = results[0].pose.leftEar.y;
-        leftearX = results[0].pose.leftEar.x;
-        console.log(leftearY);
-        leftearScore = results[0].pose.keypoints[3].score;
+        righteyeY = results[0].pose.rightEye.y;
+        righteyeX = results[0].pose.rightEye.x;
+        console.log(righteyeY);
+        console.log(righteyeX);
+        lefteyeY = results[0].pose.leftEye.y;
+        lefteyeX = results[0].pose.leftEye.x;
+        console.log(lefteyeY);
+        console.log(lefteyeX);
+        lefteyeScore = results[0].pose.keypoints[1].score;
+        righteyeScore = results[0].pose.keypoints[2].score;
     }
 }
